@@ -1,0 +1,79 @@
+{% extends 'layout.html' %} {% set active_page = 'add_food_item' %} {% block
+body %}
+<div class="row">
+  <div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Foods</h3>
+      </div>
+
+      <div class="panel-body">
+        <form method="POST" action="{{url_for('create_food_item')}}">
+          <div class="form-group">
+            <label for="food-name">Food Name</label>
+            <input
+              autofocus
+              name="food_name"
+              type="text"
+              class="form-control"
+              id="food-name"
+              placeholder="Food Name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="protein">Protein</label>
+            <input
+              name="protein"
+              type="number"
+              class="form-control"
+              id="protein"
+              placeholder="Protein"
+            />
+          </div>
+          <div class="form-group">
+            <label for="carbohydrates">Carbohydrates</label>
+            <input
+              name="carbs"
+              type="number"
+              class="form-control"
+              id="carbohydrates"
+              placeholder="Carbohydrates"
+            />
+          </div>
+          <div class="form-group">
+            <label for="fat">Fat</label>
+            <input
+              name="fat"
+              type="number"
+              class="form-control"
+              id="fat"
+              placeholder="Fat"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <div class="page-header"></div>
+
+        {% for food in food_items %}
+        <ul class="nav nav-pills" role="tablist" style="margin-bottom: 10px">
+          <li class="active"><a>{{food.name}}</a></li>
+          <li>
+            <a>Protein: <span class="badge">{{food.protein}}</span></a>
+          </li>
+          <li>
+            <a>Carbohydrates: <span class="badge">{{food.carbs}}</span></a>
+          </li>
+          <li>
+            <a>Fat: <span class="badge">{{food.fat}}</span></a>
+          </li>
+          <li>
+            <a>Calories: <span class="badge">Implement me</span></a>
+          </li>
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %} {% set active_page = 'home' %} {% block body %}
+<div class="row">
+  <div>
+    <form method="POST" action="{{url_for('create_day')}}">
+      <div class="form-group">
+        <label for="new-day">New Day</label>
+        <input type="date" class="form-control" id="new-day" name="new-day" />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+    <div class="page-header"></div>
+
+    {% for day in days %}
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{day.format_date}}</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="nav nav-pills" role="tablist">
+          <li>
+            <a>Protein: <span class="badge">0</span></a>
+          </li>
+          <li>
+            <a>Carbohydrates: <span class="badge">0</span></a>
+          </li>
+          <li>
+            <a>Fat: <span class="badge">0</span></a>
+          </li>
+          <li>
+            <a>Calories: <span class="badge">1650</span></a>
+          </li>
+          <li>
+            <a
+              href="{{url_for('days', id=day.id)}}"
+              type="button"
+              class="btn btn-link"
+              >View Detail</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

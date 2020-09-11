@@ -1,0 +1,72 @@
+{% extends 'layout.html' %} {% block body %}
+<div class="row">
+  <div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{day.format_date}}</h3>
+      </div>
+
+      <div class="panel-body">
+        <form
+          method="POST"
+          action="{{url_for('add_food_to_day', day_id=day.id)}}"
+        >
+          <div class="form-group">
+            <select name="food_item_ids" class="form-control">
+              {% for food in all_food %}
+              <option value="{{food.id}}">{{food.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <div class="page-header"></div>
+
+        <ul
+          class="nav nav-pills"
+          role="tablist"
+          style="background-color: #50acfc"
+        >
+          <li class="active"><a>{{x.total}}</a></li>
+          <li>
+            <a>Protein: <span class="badge">{{x.protein}}</span></a>
+          </li>
+          <li>
+            <a>Carbohydrates: <span class="badge">{{x.carbs}}</span></a>
+          </li>
+          <li>
+            <a>Fat: <span class="badge">{{x.fat}}</span></a>
+          </li>
+          <li>
+            <a>Calories: <span class="badge">{{x.calories}}</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="page-header"></div>
+
+      {% for food in day.daily_foods %}
+      <div class="panel-body">
+        <ul class="nav nav-pills" role="tablist">
+          <li class="active"><a>{{food.name}}</a></li>
+          <li>
+            <a>Protein: <span class="badge">{{food.protein}}</span></a>
+          </li>
+          <li>
+            <a>Carbohydrates: <span class="badge">{{food.carbs}}</span></a>
+          </li>
+          <li>
+            <a>Fat: <span class="badge">{{food.fat}}</span></a>
+          </li>
+          <li>
+            <a>Calories: <span class="badge">{{food.calories}}</span></a>
+          </li>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

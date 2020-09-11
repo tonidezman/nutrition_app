@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Food Tracker | {% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="{{url_for('static', filename='css/bootstrap.min.css')}}"
+      rel="stylesheet"
+    />
+    <!-- Custom styles for this template -->
+    <link
+      href="{{url_for('static', filename='css/theme.css')}}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    {% include '_nav.html' %}
+
+    <div class="container theme-showcase col-sm-6 col-sm-offset-3" role="main">
+      {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>
