@@ -66,7 +66,6 @@ def days(id):
         'daily_foods': daily_foods
     }
     total = get_total(daily_foods, id)
-    print(total['total'])
     return render_template('day.html', day=res, all_food=all_food, x=total)
 
 
@@ -95,7 +94,6 @@ def create_day():
 def create_food_item():
     f = request.form
     args = [f['food_name'], f['protein'], f['fat'], f['carbs']]
-    print(args)
     db = get_db()
     cur = db.cursor()
     cur = cur.execute(
